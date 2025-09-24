@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Personal Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #111, #444);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .logo-container {
+      margin: 30px auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    canvas {
+      background: white;
+      border-radius: 50%;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .social-embeds {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #0af;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Welcome to My Personal Website</h1>
+  <p>Showcasing my work, journey, and social media presence</p>
+</header>
+
+<div class="logo-container">
+  <canvas id="magellanCanvas" width="250" height="250"></canvas>
+</div>
+
+<section>
+  <h2>About Me</h2>
+  <p style="text-align:center; max-width:700px; margin:auto;">
+    Hello! I'm [Your Name]. This website is my digital space where I share my journey, thoughts,
+    and creativity. You'll also find my latest updates from YouTube, Instagram, and Facebook.
+  </p>
+</section>
+
+<section>
+  <h2>My Social Media</h2>
+  <div class="social-embeds">
+    <!-- YouTube Embed -->
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+
+    <!-- Facebook Page Embed -->
+    <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/facebook&tabs=timeline&width=340&height=300" scrolling="no"></iframe>
+
+    <!-- Twitter/X Embed -->
+    <iframe src="https://twitframe.com/show?url=https://twitter.com/Twitter/status/20"></iframe>
+
+    <!-- Instagram Embed -->
+    <iframe src="https://www.instagram.com/p/Cx12345/embed" allowtransparency="true"></iframe>
+  </div>
+</section>
+
+<footer>
+  <p>Connect with me:</p>
+  <a href="https://www.youtube.com/" target="_blank">YouTube</a> |
+  <a href="https://www.facebook.com/" target="_blank">Facebook</a> |
+  <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
+  <a href="https://twitter.com/" target="_blank">Twitter</a>
+  <p style="margin-top:10px;">&copy; 2025 My Personal Website</p>
+</footer>
+
+<script>
+window.onload = function() {
+  var canvas = document.getElementById('magellanCanvas');
+  var ctx = canvas.getContext('2d');
+  var lightBlue = '#007bff';
+  var darkGray = '#444';
+  var white = '#fff';
+
+  ctx.strokeStyle = lightBlue;
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.arc(canvas.width / 2, canvas.height / 2, 100, 0, 2 * Math.PI);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(canvas.width / 2, canvas.height / 2, 125, 0, 2 * Math.PI);
+  ctx.stroke();
+
+  ctx.strokeStyle = darkGray;
+  ctx.beginPath();
+  ctx.arc(canvas.width / 2, canvas.height / 2, 80, 0, 2 * Math.PI);
+  ctx.stroke();
+
+  ctx.fillStyle = white;
+  ctx.font = 'bold 100px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('M', canvas.width / 2, canvas.height / 2 + 10);
+};
+</script>
+
+</body>
+  </html>
