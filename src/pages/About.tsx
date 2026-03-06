@@ -26,19 +26,19 @@ const techStack = [
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-gray-950 text-white pt-20 px-4">
-      <div className="max-w-4xl mx-auto py-16">
-        <h1 className="text-4xl font-bold mb-2 text-cyan-400">💫 About Me</h1>
-        <div className="w-16 h-1 bg-cyan-500 mb-8 rounded-full" />
+    <main className="min-h-screen bg-gray-950 text-white pt-16 sm:pt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-cyan-400">💫 About Me</h1>
+        <div className="w-16 h-1 bg-cyan-500 mb-6 sm:mb-8 rounded-full" />
 
-        <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 mb-10 shadow-xl">
-          <p className="text-lg text-gray-300 leading-relaxed">
+        <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5 sm:p-8 mb-8 sm:mb-10 shadow-xl">
+          <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
             I am currently working with <span className="text-cyan-400 font-semibold">AI agents</span> and{' '}
             <span className="text-cyan-400 font-semibold">full-stack web development</span> along with{' '}
             <span className="text-cyan-400 font-semibold">Linux</span> and{' '}
             <span className="text-cyan-400 font-semibold">databases</span>.
           </p>
-          <p className="text-gray-400 mt-4 leading-relaxed">
+          <p className="text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
             I'm passionate about building intelligent systems that solve real-world problems.
             My journey spans from low-level programming in C++ to high-level machine learning pipelines,
             from database optimization to cloud deployments. I love automating everything and exploring
@@ -46,20 +46,20 @@ export default function About() {
           </p>
         </div>
 
-        <h2 className="text-2xl font-bold mb-6 text-cyan-400">💻 Tech Stack</h2>
-        <div className="flex flex-wrap gap-3 mb-12">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-cyan-400">💻 Tech Stack</h2>
+        <div className="flex flex-wrap gap-2 sm:gap-3 mb-10 sm:mb-12">
           {techStack.map((tech) => (
             <span
               key={tech.name}
-              className={`px-4 py-2 rounded-full text-sm font-semibold text-white ${tech.color}`}
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold text-white ${tech.color}`}
             >
               {tech.name}
             </span>
           ))}
         </div>
 
-        <h2 className="text-2xl font-bold mb-6 text-cyan-400">🎯 What I Do</h2>
-        <div className="grid md:grid-cols-2 gap-6">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-cyan-400">🎯 What I Do</h2>
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
           {[
             {
               icon: '🤖',
@@ -82,9 +82,9 @@ export default function About() {
               desc: 'Designing and optimizing relational databases with MySQL and PostgreSQL.',
             },
           ].map(({ icon, title, desc }) => (
-            <div key={title} className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-cyan-800 transition-colors">
-              <div className="text-3xl mb-3">{icon}</div>
-              <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
+            <div key={title} className="bg-gray-900 border border-gray-800 rounded-xl p-5 sm:p-6 hover:border-cyan-800 transition-colors">
+              <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">{icon}</div>
+              <h3 className="text-base sm:text-lg font-semibold text-white mb-2">{title}</h3>
               <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
             </div>
           ))}

@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 border-t border-gray-800 py-6 mt-auto">
-      <div className="max-w-6xl mx-auto px-4 text-center text-gray-500 text-sm">
+    <footer className="bg-gray-900 border-t border-gray-800 py-5 sm:py-6 mt-auto">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center text-gray-500 text-xs sm:text-sm">
         <p>© {new Date().getFullYear()} Soumyadip Karforma. Built with React + TypeScript.</p>
         <p className="mt-1">
           <a

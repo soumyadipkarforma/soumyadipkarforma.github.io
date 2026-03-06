@@ -53,45 +53,45 @@ const donations = [
 
 export default function Contact() {
   return (
-    <main className="min-h-screen bg-gray-950 text-white pt-20 px-4">
-      <div className="max-w-3xl mx-auto py-16">
-        <h1 className="text-4xl font-bold mb-2 text-cyan-400">📬 Contact</h1>
+    <main className="min-h-screen bg-gray-950 text-white pt-16 sm:pt-20">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-cyan-400">📬 Contact</h1>
         <div className="w-16 h-1 bg-cyan-500 mb-4 rounded-full" />
-        <p className="text-gray-400 mb-12">
+        <p className="text-gray-400 mb-10 sm:mb-12 text-sm sm:text-base">
           Feel free to reach out through any of these channels!
         </p>
 
-        <h2 className="text-2xl font-bold mb-6 text-white">🌐 Socials</h2>
-        <div className="grid sm:grid-cols-2 gap-4 mb-12">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-white">🌐 Socials</h2>
+        <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
           {socials.map((s) => (
             <a
               key={s.name}
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center gap-4 bg-gray-900 border border-gray-800 rounded-xl p-5 transition-all ${s.color}`}
+              className={`flex items-center gap-3 sm:gap-4 bg-gray-900 border border-gray-800 rounded-xl p-4 sm:p-5 transition-all ${s.color}`}
             >
-              <span className="text-3xl">{s.icon}</span>
-              <div>
-                <p className="font-semibold text-white">{s.name}</p>
-                <p className="text-gray-400 text-sm">{s.handle}</p>
+              <span className="text-2xl sm:text-3xl shrink-0">{s.icon}</span>
+              <div className="min-w-0">
+                <p className="font-semibold text-white text-sm sm:text-base">{s.name}</p>
+                <p className="text-gray-400 text-xs sm:text-sm truncate">{s.handle}</p>
               </div>
             </a>
           ))}
         </div>
 
-        <h2 className="text-2xl font-bold mb-6 text-white">💰 Support My Work</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-white">💰 Support My Work</h2>
+        <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
           {donations.map((d) => (
             <a
               key={d.name}
               href={d.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex flex-col gap-2 rounded-xl p-6 font-semibold transition-colors ${d.color} shadow-lg`}
+              className={`flex flex-col gap-1.5 sm:gap-2 rounded-xl p-5 sm:p-6 font-semibold transition-colors ${d.color} shadow-lg`}
             >
-              <span className="text-lg">{d.name}</span>
-              <span className="text-sm font-normal opacity-80">{d.desc}</span>
+              <span className="text-base sm:text-lg">{d.name}</span>
+              <span className="text-xs sm:text-sm font-normal opacity-80">{d.desc}</span>
             </a>
           ))}
         </div>

@@ -9,24 +9,35 @@ const navLinks = [
   { to: '/contact', label: 'Contact' },
 ];
 
+function isActive(linkTo: string, pathname: string) {
+  if (linkTo === '/') return pathname === '/';
+  return pathname === linkTo || pathname.startsWith(linkTo + '/');
+}
+
 export default function Navbar() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur border-b border-gray-800">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur border-b border-gray-800">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
+        <Link
+          to="/"
+          className="text-lg sm:text-xl font-bold text-cyan-400 hover:text-cyan-300 transition-colors tracking-tight"
+        >
           SK
         </Link>
+
         {/* Desktop nav */}
-        <ul className="hidden md:flex gap-6">
+        <ul className="hidden md:flex items-center gap-1">
           {navLinks.map(({ to, label }) => (
             <li key={to}>
               <Link
                 to={to}
-                className={`text-sm font-medium transition-colors ${
-                  pathname === to ? 'text-cyan-400' : 'text-gray-300 hover:text-white'
+                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  isActive(to, pathname)
+                    ? 'text-cyan-400 bg-cyan-950/60'
+                    : 'text-gray-300 hover:text-white hover:bg-gray-800'
                 }`}
               >
                 {label}
@@ -34,13 +45,15 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-gray-300 hover:text-white"
+          className="md:hidden p-2 text-gray-300 hover:text-white rounded-md hover:bg-gray-800 transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {open ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -49,17 +62,20 @@ export default function Navbar() {
           </svg>
         </button>
       </div>
+
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-gray-900 border-t border-gray-800 px-4 py-3">
-          <ul className="flex flex-col gap-3">
+        <div className="md:hidden bg-gray-900/98 border-t border-gray-800 px-4 py-3 shadow-xl">
+          <ul className="flex flex-col gap-1">
             {navLinks.map(({ to, label }) => (
               <li key={to}>
                 <Link
                   to={to}
                   onClick={() => setOpen(false)}
-                  className={`block text-sm font-medium transition-colors ${
-                    pathname === to ? 'text-cyan-400' : 'text-gray-300 hover:text-white'
+                  className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                    isActive(to, pathname)
+                      ? 'text-cyan-400 bg-cyan-950/60'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
                   }`}
                 >
                   {label}

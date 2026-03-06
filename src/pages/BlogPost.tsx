@@ -36,19 +36,21 @@ export default function BlogPost() {
       return;
     }
     const { data, content } = parseFrontmatter(raw);
+    // Strip a leading `# Title` line that duplicates the frontmatter title
+    const trimmedContent = content.replace(/^#[^\n]*\n+/, '');
     setPost({
       title: (data.title as string) || slug || '',
       date: (data.date as string) || '',
       tags: (data.tags as string[]) || [],
-      content,
+      content: trimmedContent,
     });
   }, [slug]);
 
   if (notFound) {
     return (
-      <main className="min-h-screen bg-gray-950 text-white pt-20 px-4 flex items-center justify-center">
+      <main className="min-h-screen bg-gray-950 text-white pt-16 sm:pt-20 px-4 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4 text-red-400">Post Not Found</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-red-400">Post Not Found</h1>
           <Link to="/blog" className="text-cyan-400 hover:text-cyan-300">← Back to Blog</Link>
         </div>
       </main>
@@ -58,23 +60,23 @@ export default function BlogPost() {
   if (!post) return null;
 
   return (
-    <main className="min-h-screen bg-gray-950 text-white pt-20 px-4">
-      <div className="max-w-3xl mx-auto py-16">
-        <Link to="/blog" className="text-cyan-400 hover:text-cyan-300 text-sm mb-8 block">
+    <main className="min-h-screen bg-gray-950 text-white pt-16 sm:pt-20">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <Link to="/blog" className="text-cyan-400 hover:text-cyan-300 text-sm mb-6 sm:mb-8 block">
           ← Back to Blog
         </Link>
-        <h1 className="text-4xl font-bold mb-3 text-white">{post.title}</h1>
-        <div className="flex items-center gap-4 mb-6">
-          <time className="text-gray-500 text-sm">{post.date}</time>
-          <div className="flex flex-wrap gap-2">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-white leading-snug">{post.title}</h1>
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+          <time className="text-gray-500 text-xs sm:text-sm">{post.date}</time>
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {post.tags.map((tag) => (
-              <span key={tag} className="px-2 py-1 bg-gray-800 text-cyan-400 text-xs rounded-md">
+              <span key={tag} className="px-2 py-0.5 sm:py-1 bg-gray-800 text-cyan-400 text-xs rounded-md">
                 #{tag}
               </span>
             ))}
           </div>
         </div>
-        <div className="prose prose-invert prose-cyan max-w-none">
+        <div className="prose prose-invert prose-cyan max-w-none prose-sm sm:prose-base">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </div>
       </div>

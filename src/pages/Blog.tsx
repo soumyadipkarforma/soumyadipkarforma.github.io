@@ -55,32 +55,32 @@ export default function Blog() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gray-950 text-white pt-20 px-4">
-      <div className="max-w-3xl mx-auto py-16">
-        <h1 className="text-4xl font-bold mb-2 text-cyan-400">📝 Blog</h1>
+    <main className="min-h-screen bg-gray-950 text-white pt-16 sm:pt-20">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-cyan-400">📝 Blog</h1>
         <div className="w-16 h-1 bg-cyan-500 mb-4 rounded-full" />
-        <p className="text-gray-400 mb-12">Thoughts on AI, web dev, Linux and more.</p>
+        <p className="text-gray-400 mb-10 sm:mb-12 text-sm sm:text-base">Thoughts on AI, web dev, Linux and more.</p>
 
         {posts.length === 0 ? (
           <p className="text-gray-500">No posts yet. Check back soon!</p>
         ) : (
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-5 sm:gap-6">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="block bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-cyan-700 transition-all hover:shadow-lg hover:shadow-cyan-900/20"
+                className="block bg-gray-900 border border-gray-800 rounded-xl p-5 sm:p-6 hover:border-cyan-700 transition-all hover:shadow-lg hover:shadow-cyan-900/20"
               >
-                <div className="flex items-start justify-between gap-4 mb-2">
-                  <h2 className="text-xl font-bold text-white hover:text-cyan-400 transition-colors">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4 mb-2">
+                  <h2 className="text-lg sm:text-xl font-bold text-white hover:text-cyan-400 transition-colors leading-snug">
                     {post.title}
                   </h2>
-                  <time className="text-gray-500 text-sm whitespace-nowrap">{post.date}</time>
+                  <time className="text-gray-500 text-xs sm:text-sm whitespace-nowrap shrink-0">{post.date}</time>
                 </div>
                 <p className="text-gray-400 text-sm leading-relaxed mb-4">{post.description}</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {post.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-1 bg-gray-800 text-cyan-400 text-xs rounded-md">
+                    <span key={tag} className="px-2 py-0.5 sm:py-1 bg-gray-800 text-cyan-400 text-xs rounded-md">
                       #{tag}
                     </span>
                   ))}
