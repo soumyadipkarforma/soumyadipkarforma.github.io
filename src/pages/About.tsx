@@ -1,3 +1,6 @@
+import { useGitHubOrgs } from '../hooks/useGitHubOrgs';
+import config from '../config';
+
 const techStack = [
   { name: 'C++', color: 'bg-blue-700' },
   { name: 'C#', color: 'bg-green-700' },
@@ -25,6 +28,8 @@ const techStack = [
 ];
 
 export default function About() {
+  const orgsState = useGitHubOrgs(config.githubUsername);
+
   return (
     <main className="min-h-screen bg-gray-950 text-white pt-16 sm:pt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
