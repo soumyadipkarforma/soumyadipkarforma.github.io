@@ -11,6 +11,7 @@ const socials = [
 const donations = [
   { name: 'Buy Me a Coffee ☕', url: 'https://buymeacoffee.com/soumyadipkarforma', desc: 'Support my work with a coffee!',          gradient: 'from-yellow-400 to-amber-500 text-black' },
   { name: 'Patreon 🎨',        url: 'https://patreon.com/SoumyadipKarforma',      desc: 'Become a patron and get exclusive content.', gradient: 'from-orange-500 to-red-600 text-white' },
+  { name: 'GitHub Sponsor 💖', url: 'https://github.com/sponsors/soumyadipkarforma', desc: 'Sponsor me directly on GitHub.',          gradient: 'from-pink-500 to-rose-600 text-white' },
 ];
 
 const container: Variants = {
