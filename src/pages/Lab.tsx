@@ -1,21 +1,12 @@
 import { useState, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const NeuralNetwork     = lazy(() => import('./lab/NeuralNetwork'));
-const ParticlePhysics   = lazy(() => import('./lab/ParticlePhysics'));
-const FourierSynth      = lazy(() => import('./lab/FourierSynth'));
-const FractalExplorer   = lazy(() => import('./lab/FractalExplorer'));
-const GameOfLife        = lazy(() => import('./lab/GameOfLife'));
+const NeuralNetwork   = lazy(() => import('./lab/NeuralNetwork'));
+const ParticlePhysics = lazy(() => import('./lab/ParticlePhysics'));
+const FourierSynth    = lazy(() => import('./lab/FourierSynth'));
+const FractalExplorer = lazy(() => import('./lab/FractalExplorer'));
+const GameOfLife      = lazy(() => import('./lab/GameOfLife'));
 const SortingVisualizer = lazy(() => import('./lab/SortingVisualizer'));
-const SolarSystem       = lazy(() => import('./lab/SolarSystem'));
-const GalaxyFormation   = lazy(() => import('./lab/GalaxyFormation'));
-const BlackHole         = lazy(() => import('./lab/BlackHole'));
-const NBodyGravity      = lazy(() => import('./lab/NBodyGravity'));
-const AsteroidBelt      = lazy(() => import('./lab/AsteroidBelt'));
-const DoubleSlit        = lazy(() => import('./lab/DoubleSlit'));
-const LorentzAttractor  = lazy(() => import('./lab/LorentzAttractor'));
-const ReactionDiffusion = lazy(() => import('./lab/ReactionDiffusion'));
-const Boids             = lazy(() => import('./lab/Boids'));
 
 interface Experiment {
   id: string;
@@ -82,87 +73,6 @@ const experiments: Experiment[] = [
     color: 'from-red-500/20 to-orange-600/10',
     component: <SortingVisualizer />,
   },
-  {
-    id: 'solar',
-    title: 'Solar System',
-    subtitle: 'All 8 planets orbiting the Sun in real time',
-    icon: '🪐',
-    tags: ['Astronomy', 'Physics', 'Orbits'],
-    color: 'from-yellow-500/20 to-orange-600/10',
-    component: <SolarSystem />,
-  },
-  {
-    id: 'galaxy',
-    title: 'Galaxy Formation',
-    subtitle: 'Spiral galaxy with differential rotation',
-    icon: '🌌',
-    tags: ['Astrophysics', 'Simulation', 'Gravity'],
-    color: 'from-violet-600/20 to-purple-800/10',
-    component: <GalaxyFormation />,
-  },
-  {
-    id: 'blackhole',
-    title: 'Black Hole',
-    subtitle: 'Accretion disk, relativistic jets & lensing',
-    icon: '⚫',
-    tags: ['Relativity', 'Astrophysics', 'GR'],
-    color: 'from-gray-800/40 to-black/40',
-    component: <BlackHole />,
-  },
-  {
-    id: 'nbody',
-    title: 'N-Body Gravity',
-    subtitle: 'Mutual gravitational attraction & collisions',
-    icon: '🌑',
-    tags: ['Physics', 'Gravity', 'Chaos'],
-    color: 'from-blue-600/20 to-indigo-800/10',
-    component: <NBodyGravity />,
-  },
-  {
-    id: 'asteroids',
-    title: 'Asteroid Belt',
-    subtitle: 'Kirkwood gaps, comets & mining explosions',
-    icon: '☄️',
-    tags: ['Astronomy', 'Orbital Mechanics', 'Simulation'],
-    color: 'from-stone-600/20 to-gray-700/10',
-    component: <AsteroidBelt />,
-  },
-  {
-    id: 'doubleslit',
-    title: 'Double-Slit Experiment',
-    subtitle: 'Quantum interference patterns building live',
-    icon: '🌊',
-    tags: ['Quantum Mechanics', 'Wave Optics', 'Physics'],
-    color: 'from-cyan-600/20 to-blue-800/10',
-    component: <DoubleSlit />,
-  },
-  {
-    id: 'lorenz',
-    title: 'Lorenz Attractor',
-    subtitle: 'Chaos theory — the butterfly effect in 3D',
-    icon: '🦋',
-    tags: ['Chaos Theory', 'Differential Equations', 'Math'],
-    color: 'from-pink-600/20 to-rose-800/10',
-    component: <LorentzAttractor />,
-  },
-  {
-    id: 'reaction',
-    title: 'Reaction Diffusion',
-    subtitle: 'Gray-Scott patterns: coral, spots, stripes',
-    icon: '🧬',
-    tags: ['Chemistry', 'Pattern Formation', 'Biology'],
-    color: 'from-teal-600/20 to-cyan-800/10',
-    component: <ReactionDiffusion />,
-  },
-  {
-    id: 'boids',
-    title: 'Boids Flocking',
-    subtitle: 'Emergent flocking from 3 local rules',
-    icon: '🐦',
-    tags: ['AI', 'Emergence', 'Flocking'],
-    color: 'from-green-600/20 to-emerald-800/10',
-    component: <Boids />,
-  },
 ];
 
 function LoadingFallback() {
@@ -195,7 +105,7 @@ export default function Lab() {
           </div>
           <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full mb-4" />
           <p className="text-gray-400 text-sm sm:text-base max-w-2xl leading-relaxed">
-            Fifteen interactive scientific experiments — pure code, zero plugins. 
+            Six interactive scientific experiments — pure code, zero plugins. 
             Click any experiment to open it full-width. Every simulation runs entirely in your browser.
           </p>
         </motion.div>
