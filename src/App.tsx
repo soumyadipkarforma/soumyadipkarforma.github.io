@@ -8,6 +8,7 @@ import Projects from './pages/Projects';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
+import Lab from './pages/Lab';
 
 /** Subtle scanline sweep (decorative) */
 function Scanline() {
@@ -55,10 +56,12 @@ function AuroraBackground() {
   );
 }
 
+const cubicBezier = [0.22, 1, 0.36, 1] as const;
+
 const pageVariants = {
   initial: { opacity: 0, y: 18, filter: 'blur(4px)' },
-  animate: { opacity: 1, y: 0,  filter: 'blur(0px)', transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
-  exit:    { opacity: 0, y: -12, filter: 'blur(4px)', transition: { duration: 0.3,  ease: [0.22, 1, 0.36, 1] } },
+  animate: { opacity: 1, y: 0,  filter: 'blur(0px)', transition: { duration: 0.45, ease: cubicBezier } },
+  exit:    { opacity: 0, y: -12, filter: 'blur(4px)', transition: { duration: 0.3,  ease: cubicBezier } },
 };
 
 function AnimatedRoutes() {
@@ -73,6 +76,7 @@ function AnimatedRoutes() {
           <Route path="/blog"       element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact"    element={<Contact />} />
+          <Route path="/lab"        element={<Lab />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

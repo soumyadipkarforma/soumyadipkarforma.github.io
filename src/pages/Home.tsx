@@ -45,6 +45,12 @@ export default function Home() {
             View Projects
           </Link>
           <Link
+            to="/lab"
+            className="flex-1 sm:flex-none text-center px-5 sm:px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-violet-500/30 text-sm sm:text-base"
+          >
+            🔭 The Lab
+          </Link>
+          <Link
             to="/blog"
             className="flex-1 sm:flex-none text-center px-5 sm:px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-lg border border-gray-700 transition-colors text-sm sm:text-base"
           >
