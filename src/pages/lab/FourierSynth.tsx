@@ -38,6 +38,7 @@ export default function FourierSynth() {
     let last = performance.now();
 
     function draw(ts: number) {
+      const canvas = canvasRef.current; if (!canvas) return;
       const dt = Math.min((ts - last) / 1000, 0.05); last = ts;
       if (playRef.current) tRef.current += dt;
       const t = tRef.current;

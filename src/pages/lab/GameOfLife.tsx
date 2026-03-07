@@ -110,7 +110,7 @@ export default function GameOfLife() {
     function onDown(e: PointerEvent) {
       if (!drawRef.current) return;
       isDown = true; toggle(e);
-      canvas.setPointerCapture(e.pointerId);
+      canvasRef.current!.setPointerCapture(e.pointerId);
     }
     function toggle(e: PointerEvent) {
       if (!isDown) return;

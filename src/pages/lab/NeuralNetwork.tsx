@@ -52,7 +52,7 @@ export default function NeuralNetworkViz() {
     // Forward pass: schedule signals layer by layer
     s.signals = [];
     LAYERS.slice(0, -1).forEach((_, li) => {
-      s.neurons[li].forEach((from, fi) => {
+      s.neurons[li].forEach((_, fi) => {
         s.neurons[li + 1].forEach((_, ti) => {
           s.signals.push({ fromLayer: li, fromIdx: fi, toLayer: li + 1, toIdx: ti, t: 0, value: s.weights[li][fi][ti] });
         });
@@ -89,7 +89,7 @@ export default function NeuralNetworkViz() {
       const { neurons, weights, signals } = stateRef.current;
       if (!neurons.length) { stateRef.current.raf = requestAnimationFrame(draw); return; }
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height);
 
       // Draw weight lines
       neurons.slice(0, -1).forEach((layer, li) => {

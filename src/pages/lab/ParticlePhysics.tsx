@@ -56,6 +56,7 @@ export default function ParticlePhysics() {
     let last = performance.now();
 
     function loop(ts: number) {
+      const canvas = canvasRef.current; if (!canvas) return;
       const dt = Math.min((ts - last) / 1000, 0.033); last = ts;
       const W = canvas.width, H = canvas.height;
       ctx.clearRect(0, 0, W, H);
@@ -134,17 +135,20 @@ export default function ParticlePhysics() {
 
     // Drag
     function getIdx(x: number, y: number) {
+      const canvas = canvasRef.current; if (!canvas) return null;
       const r = canvas.getBoundingClientRect();
       const cx = x - r.left, cy = y - r.top;
       return particles.current.findIndex(p => Math.hypot(p.x - cx, p.y - cy) < p.radius + 8);
     }
     function onDown(e: PointerEvent) {
+      const canvas = canvasRef.current; if (!canvas) return;
       const idx = getIdx(e.clientX, e.clientY);
-      if (idx < 0) return;
-      dragRef.current = { idx, ox: e.clientX, oy: e.clientY };
+      if (idx === null || idx < 0) return;
+      dragRef.current = { idx: idx, ox: e.clientX, oy: e.clientY };
       canvas.setPointerCapture(e.pointerId);
     }
     function onMove(e: PointerEvent) {
+      const canvas = canvasRef.current; if (!canvas) return;
       if (!dragRef.current) return;
       const r = canvas.getBoundingClientRect();
       const p = particles.current[dragRef.current.idx];

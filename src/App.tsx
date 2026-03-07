@@ -56,19 +56,24 @@ function AuroraBackground() {
   );
 }
 
-const cubicBezier = [0.22, 1, 0.36, 1] as const;
-
 const pageVariants = {
   initial: { opacity: 0, y: 18, filter: 'blur(4px)' },
-  animate: { opacity: 1, y: 0,  filter: 'blur(0px)', transition: { duration: 0.45, ease: cubicBezier } },
-  exit:    { opacity: 0, y: -12, filter: 'blur(4px)', transition: { duration: 0.3,  ease: cubicBezier } },
+  animate: { opacity: 1, y: 0,  filter: 'blur(0px)' },
+  exit:    { opacity: 0, y: -12, filter: 'blur(4px)' },
 };
 
 function AnimatedRoutes() {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={location.pathname} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+      <motion.div
+        key={location.pathname}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{ duration: 0.45, ease: 'easeOut' }}
+      >
         <Routes location={location}>
           <Route path="/"           element={<Home />} />
           <Route path="/about"      element={<About />} />

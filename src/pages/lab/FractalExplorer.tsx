@@ -104,6 +104,7 @@ export default function FractalExplorer() {
     render();
 
     function onWheel(e: WheelEvent) {
+      const canvas = canvasRef.current; if (!canvas) return;
       e.preventDefault();
       const r = canvas.getBoundingClientRect();
       handleZoom(e.deltaY > 0 ? 1.3 : 0.7, e.clientX - r.left, e.clientY - r.top);
@@ -117,8 +118,8 @@ export default function FractalExplorer() {
     }
     function onMv(e: PointerEvent) {
       if (!dragStart) return;
+      const canvas = canvasRef.current; if (!canvas) return;
       const W = canvas.width, H = canvas.height;
-      const v = viewRef.current;
       const dx = (e.clientX - dragStart.x) / W * (dragStart.vxMax - dragStart.vxMin);
       const dy = (e.clientY - dragStart.y) / H * (dragStart.vyMax - dragStart.vyMin);
       viewRef.current = { xMin: dragStart.vxMin - dx, xMax: dragStart.vxMax - dx, yMin: dragStart.vyMin - dy, yMax: dragStart.vyMax - dy };
