@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -31,7 +30,7 @@ function parseFrontmatter(raw: string): { data: Record<string, unknown>; content
   return { data, content: match[2] };
 }
 
-function readTime(raw: string): string {
+function estimateReadTime(raw: string): string {
   const words = raw.split(/\s+/).length;
   const mins = Math.max(1, Math.round(words / 200));
   return `${mins} min read`;
@@ -48,18 +47,14 @@ export function getAllPosts(): BlogMeta[] {
         date:        (data.date as string) || '',
         description: (data.description as string) || '',
         tags:        (data.tags as string[]) || [],
-        readTime:    readTime(content),
+        readTime:    estimateReadTime(content),
       };
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1));
 }
 
 export default function Blog() {
-  const [posts, setPosts] = useState<BlogMeta[]>([]);
-
-  useEffect(() => {
-    setPosts(getAllPosts());
-  }, []);
+  const posts = getAllPosts();
 
   return (
     <main className="min-h-screen text-white pt-16 sm:pt-20">
@@ -84,8 +79,7 @@ export default function Blog() {
               <motion.div
                 key={post.slug}
                 initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut', delay: i * 0.1 }}
                 whileHover={{ borderColor: 'rgba(0,212,255,0.4)' }}
               >

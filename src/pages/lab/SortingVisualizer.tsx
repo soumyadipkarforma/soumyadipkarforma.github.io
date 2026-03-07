@@ -61,7 +61,7 @@ async function* quickSort(arr: number[], signal: () => boolean) {
 
 const ALGORITHMS: Record<string, SortFn> = { Bubble: bubbleSort, Selection: selectionSort, Insertion: insertionSort, Quick: quickSort };
 
-function makeArr(n: number) { return Array.from({ length: n }, (_, i) => Math.floor((i + 1) / n * 100)); }
+function makeSortedArray(n: number) { return Array.from({ length: n }, (_, i) => Math.floor((i + 1) / n * 100)); }
 function shuffle(a: number[]) { const r=[...a]; for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r; }
 
 export default function SortingVisualizer() {
@@ -101,7 +101,7 @@ export default function SortingVisualizer() {
 
   const reset = useCallback(() => {
     stopRef.current = true;
-    const arr = shuffle(makeArr(countRef.current));
+    const arr = shuffle(makeSortedArray(countRef.current));
     stateRef.current = { arr, comparing: [], swapped: [] };
     setRunning(false);
     setTimeout(renderFrame, 50);

@@ -4,7 +4,7 @@ interface Neuron { x: number; y: number; activation: number; bias: number }
 interface Signal { fromLayer: number; fromIdx: number; toLayer: number; toIdx: number; t: number; value: number }
 
 const LAYERS = [4, 6, 6, 3];
-const COLORS = { active: '#00d4ff', inactive: '#1e293b', signal: '#f472b6', weight_pos: '#22c55e', weight_neg: '#ef4444' };
+const COLORS = { active: '#00d4ff', inactive: '#1e293b', signal: '#f472b6', weightPos: '#22c55e', weightNeg: '#ef4444' };
 
 function buildNetwork(w: number, h: number): Neuron[][] {
   return LAYERS.map((count, li) => {

@@ -51,7 +51,7 @@ function RepoCard({ repo, index }: { repo: GitHubRepo; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: 'easeOut', delay: (index % 9) * 0.05 }}
       whileHover={{ y: -6 }}

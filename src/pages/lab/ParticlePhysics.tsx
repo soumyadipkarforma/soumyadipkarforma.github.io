@@ -9,10 +9,10 @@ interface Particle {
 
 const PALETTE = ['#00d4ff', '#8b5cf6', '#f472b6', '#22c55e', '#f59e0b'];
 
-function makeParticle(w: number, h: number, i: number): Particle {
+function makeParticle(width: number, height: number, i: number): Particle {
   const charge = i % 3 === 0 ? 1 : i % 3 === 1 ? -1 : 0;
   return {
-    x: Math.random() * w, y: Math.random() * h,
+    x: Math.random() * width, y: Math.random() * height,
     vx: (Math.random() - 0.5) * 120, vy: (Math.random() - 0.5) * 120,
     mass: 1 + Math.random() * 3,
     charge,

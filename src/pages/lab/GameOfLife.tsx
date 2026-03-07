@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
 
-const CELL = 10;
+const CELL_SIZE = 10;
 
 function makeGrid(cols: number, rows: number, fill = false): Uint8Array {
   const g = new Uint8Array(cols * rows);
@@ -55,7 +55,7 @@ export default function GameOfLife() {
   const getCell = useCallback((e: PointerEvent): [number, number] | null => {
     const c = canvasRef.current; if (!c) return null;
     const r = c.getBoundingClientRect();
-    return [Math.floor((e.clientX - r.left) / CELL), Math.floor((e.clientY - r.top) / CELL)];
+    return [Math.floor((e.clientX - r.left) / CELL_SIZE), Math.floor((e.clientY - r.top) / CELL_SIZE)];
   }, []);
 
   const draw = useCallback(() => {
@@ -68,22 +68,22 @@ export default function GameOfLife() {
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < cols; x++) {
         if (!g[y * cols + x]) continue;
-        const grd = ctx.createRadialGradient(x*CELL+CELL/2, y*CELL+CELL/2, 0, x*CELL+CELL/2, y*CELL+CELL/2, CELL);
+        const grd = ctx.createRadialGradient(x*CELL_SIZE+CELL_SIZE/2, y*CELL_SIZE+CELL_SIZE/2, 0, x*CELL_SIZE+CELL_SIZE/2, y*CELL_SIZE+CELL_SIZE/2, CELL_SIZE);
         grd.addColorStop(0, '#00d4ff'); grd.addColorStop(1, '#0066aa');
         ctx.fillStyle = grd;
-        ctx.fillRect(x * CELL + 1, y * CELL + 1, CELL - 2, CELL - 2);
+        ctx.fillRect(x * CELL_SIZE + 1, y * CELL_SIZE + 1, CELL_SIZE - 2, CELL_SIZE - 2);
       }
     }
     // Grid lines
     ctx.strokeStyle = 'rgba(255,255,255,0.03)'; ctx.lineWidth = 0.5;
-    for (let x = 0; x <= W; x += CELL) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-    for (let y = 0; y <= H; y += CELL) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    for (let x = 0; x <= W; x += CELL_SIZE) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let y = 0; y <= H; y += CELL_SIZE) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
   }, []);
 
   const init = useCallback(() => {
     const c = canvasRef.current; if (!c) return;
-    colsRef.current = Math.floor(c.width / CELL);
-    rowsRef.current = Math.floor(c.height / CELL);
+    colsRef.current = Math.floor(c.width / CELL_SIZE);
+    rowsRef.current = Math.floor(c.height / CELL_SIZE);
     gridRef.current = makeGrid(colsRef.current, rowsRef.current, true);
     genRef.current = 0; setGen(0);
     draw();
